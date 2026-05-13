@@ -125,6 +125,8 @@ class Tree(Plant):
             super().display()
             print(f" {self._shade_calls} shade")
 
+    _stats: _TreeStats
+
     def __init__(
         self, name: str, height: float, age: int, trunk_diameter: float
     ) -> None:
