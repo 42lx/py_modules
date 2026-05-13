@@ -33,7 +33,7 @@ class Plant:
 
     @classmethod
     def anonymous(cls):
-        return cls("Unknown plant", 0.0, 0)
+        return Plant("Unknown plant", 0.0, 0)
 
     def get_name(self) -> str:
         return self._name
