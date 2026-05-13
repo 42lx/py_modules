@@ -22,20 +22,9 @@ class Plant:
             )
 
     def __init__(self, name: str, height: float, age: int) -> None:
-        self._name = name
-
-        if height < 0:
-            print(f"{self._name}: Error, height can't be negative")
-            self._height = 0.0
-        else:
-            self._height = height
-
-        if age < 0:
-            print(f"{self._name}: Error, age can't be negative")
-            self._age = 0
-        else:
-            self._age = age
-
+        self.set_name(name)
+        self.set_height(height)
+        self.set_age(age)
         self._stats = self._Stats()
 
     @staticmethod
@@ -52,21 +41,22 @@ class Plant:
     def get_height(self) -> float:
         return self._height
 
+    def get_age(self) -> int:
+        return self._age
+
+    def set_name(self, name: str) -> None:
+        self._name = name
+
     def set_height(self, height: float) -> bool:
         if height < 0:
             print(f"{self._name}: Error, height can't be negative")
-            print("Height update rejected")
             return False
         self._height = height
         return True
 
-    def get_age(self) -> int:
-        return self._age
-
     def set_age(self, age: int) -> bool:
         if age < 0:
             print(f"{self._name}: Error, age can't be negative")
-            print("Age update rejected")
             return False
         self._age = age
         return True
@@ -123,8 +113,6 @@ class Seed(Flower):
 
 
 class Tree(Plant):
-    _stats: "_TreeStats"
-
     class _TreeStats(Plant._Stats):
         def __init__(self) -> None:
             super().__init__()
