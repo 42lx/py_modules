@@ -4,6 +4,7 @@ def input_temperature(temp_str: str) -> int:
         raise ValueError(f'Temperature {res} is in invalid range')
     return res
 
+
 def test_temperature() -> None:
     try:
         res: int = input_temperature("25")
@@ -12,22 +13,23 @@ def test_temperature() -> None:
         print(f"Caught input_temperature err: {e}")
 
     try:
-        res: int = input_temperature("abc")
+        res = input_temperature("abc")
         print(f"Temperature is now {res}°C")
     except Exception as e:
         print(f"Caught input_temperature err: {e}")
 
     try:
-        res: int = input_temperature("100")
+        res = input_temperature("100")
         print(f"Temperature is now {res}°C")
     except Exception as e:
         print(f"Caught input_temperature err: {e}")
 
     try:
-        res: int = input_temperature("-50")
+        res = input_temperature("-50")
         print(f"Temperature is now {res}°C")
     except Exception as e:
         print(f"Caught input_temperature err: {e}")
+
 
 if __name__ == "__main__":
     test_temperature()

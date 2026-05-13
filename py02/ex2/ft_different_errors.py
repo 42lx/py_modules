@@ -10,6 +10,7 @@ def garden_operations(operation_number: int) -> None:
     else:
         return
 
+
 def test_error_types() -> None:
     for i in [0, 1, 2, 3, 4]:
         print(f"Trying op {i}")
@@ -18,6 +19,7 @@ def test_error_types() -> None:
             print(f"Success {i}")
         except Exception as e:
             print(f"Caught err: {e}")
+
 
 if __name__ == "__main__":
     test_error_types()
