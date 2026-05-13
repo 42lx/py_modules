@@ -31,6 +31,8 @@ class Plant:
     def older_than_year(days: int) -> bool:
         return days > 365
 
+    # Can't type hint here because Plant doesn't exist yet
+    # https://stackoverflow.com/questions/33533148/how-do-i-type-hint-a-method-with-the-type-of-the-enclosing-class
     @classmethod
     def anonymous(cls):
         return Plant("Unknown plant", 0.0, 0)
@@ -152,7 +154,7 @@ def display_plant_statistics(plant: Plant) -> None:
     plant.display_stats()
 
 
-def main():
+def main() -> None:
     print("=== Garden statistics ===")
     print("=== Check year-old")
     print(f"Is 30 days more than a year? -> {Plant.older_than_year(30)}")
