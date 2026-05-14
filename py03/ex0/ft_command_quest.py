@@ -9,6 +9,8 @@ def main() -> None:
         else:
             print(f"Arg {i}:", arg)
         i += 1
+    if i == 1:
+        print("No args provided")
     print("Total args:", len(sys.argv))
 
 
