@@ -5,17 +5,21 @@ def gen_player_achievements(all_achs: list[str]) -> set[str]:
     return set(random.sample(all_achs, k=random.randint(1, len(all_achs))))
 
 
+def unique_to(target, all_sets):
+    return target.difference(*(s for s in all_sets if s is not target))
+
+
 def main() -> None:
     all_achs = [
-            "Achievment 1",
-            "Achievment 2",
-            "Achievment 3",
-            "Achievment 4",
-            "Achievment 5",
-            "Achievment 6",
-            "Achievment 7",
-            "Achievment 8",
-            "Achievment 9",
+            "Ach 1",
+            "Ach 2",
+            "Ach 3",
+            "Ach 4",
+            "Ach 5",
+            "Ach 6",
+            "Ach 7",
+            "Ach 8",
+            "Ach 9",
             ]
     all_achs_set = set(all_achs)
     players = [
@@ -24,12 +28,27 @@ def main() -> None:
             gen_player_achievements(all_achs),
             gen_player_achievements(all_achs)
             ]
-    print(players)
-    shared = set.intersection(*players)
-    unique_achs_0 = players[0].difference()
+
+    print("Achievements system")
     print()
-    print(shared)
-    print(unique_achs_0)
+    i = 1
+    for player in players:
+        print(f"Player {i}:", player)
+        i += 1
+    print()
+    print("All Achievements:", all_achs_set)
+    print()
+    print("Common achievments:", set.intersection(*players))
+    print()
+    i = 1
+    for player in players:
+        print(f"Only Player {i} has:", unique_to(player, players))
+        i += 1
+    print()
+    i = 1
+    for player in players:
+        print(f"Player {i} is missing:", all_achs_set - player)
+        i += 1
 
 
 if __name__ == "__main__":
