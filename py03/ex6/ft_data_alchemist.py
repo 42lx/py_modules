@@ -3,8 +3,8 @@ import random
 
 def main() -> None:
     players = [
-        'Alice', 'bob', 'Charlie', 'dylan',
-        'Emma', 'Gregory', 'john', 'kevin', 'Liam'
+        "Alice", "bob", "Charlie", "dylan",
+        "Emma", "Gregory", "john", "kevin", "Liam"
     ]
     print("Initial list of players:", players)
     capitalized = [name.capitalize() for name in players]

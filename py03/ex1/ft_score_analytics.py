@@ -5,8 +5,7 @@ def main() -> None:
     lst = []
     for arg in sys.argv[1:]:
         try:
-            i = int(arg)
-            lst.append(i)
+            lst.append(int(arg))
         except ValueError:
             print(f"Invalid param {arg}")
     if len(lst) == 0:
