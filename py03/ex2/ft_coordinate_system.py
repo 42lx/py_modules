@@ -4,31 +4,38 @@ import math
 def get_player_pos() -> tuple[float, float, float] | None:
     while True:
         try:
-            strs = input("Input coords as x, y, z:").split(",")
-        except KeyboardInterrupt:
-            print("Interrupted by user")
+            user_input = input("Input coords as x, y, z:")
+            parts = user_input.split(",")
+        except (KeyboardInterrupt, EOFError):
+            print("\nInterrupted by user")
             return None
         try:
-            res = [float(str.strip()) for str in strs]
-            return (res[0], res[1], res[2])
-        except Exception:
-            print("Invalid. Try again")
+            x_str, y_str, z_str = parts
+            x = float(x_str.strip())
+            y = float(y_str.strip())
+            z = float(z_str.strip())
+            return (x, y, z)
+        except ValueError:
+            print("Invalid format or not exactly 3 numbers. Try again.")
 
 
 def calc_dist(
         p1: tuple[float, float, float],
         p2: tuple[float, float, float]
         ) -> float:
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
     return math.sqrt(
-            (p2[0] - p1[0]) ** 2
-            + (p2[1] - p1[1]) ** 2
-            + (p2[2] - p1[2]) ** 2
+            (x2 - x1) ** 2
+            + (y2 - y1) ** 2
+            + (z2 - z1) ** 2
             )
 
 
 def print_point(p: tuple[float, float, float]) -> None:
+    x, y, z = p
     print("Tuple:", p)
-    print(f"It includes x={p[0]}, y={p[1]}, z={p[2]}")
+    print(f"It includes x={x}, y={y}, z={z}")
 
 
 def main() -> None:
