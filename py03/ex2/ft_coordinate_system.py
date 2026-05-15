@@ -8,9 +8,6 @@ def get_player_pos() -> tuple[float, float, float] | None:
         except KeyboardInterrupt:
             print("Interrupted by user")
             return None
-        if len(strs) != 3:
-            print("Invalid. Try again")
-            continue
         try:
             res = [float(str.strip()) for str in strs]
             return (res[0], res[1], res[2])
