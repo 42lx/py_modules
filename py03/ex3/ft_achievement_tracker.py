@@ -6,7 +6,11 @@ def gen_player_achievements(all_achs: list[str]) -> set[str]:
 
 
 def unique_to(target: set[str], all_sets: list[set[str]]) -> set[str]:
-    return target.difference(*(s for s in all_sets if s is not target))
+    result = target
+    for s in all_sets:
+        if s is not target:
+            result = result.difference(s)
+    return result
 
 
 def main() -> None:
