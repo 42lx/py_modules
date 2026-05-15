@@ -7,7 +7,7 @@ def main() -> None:
         try:
             i = int(arg)
             lst.append(i)
-        except Exception:
+        except ValueError:
             print(f"Invalid param {arg}")
     if len(lst) == 0:
         print("No args provided")
