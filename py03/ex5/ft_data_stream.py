@@ -22,8 +22,6 @@ def consume_event(
 
 
 def main() -> None:
-    print("=== Game Data Stream Processor ===")
-
     event_gen = gen_event()
 
     for i in range(1000):

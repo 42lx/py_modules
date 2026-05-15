@@ -17,11 +17,11 @@ def build_inventory(args: list[str]) -> dict[str, int]:
     for arg in args:
         parsed = parse_arg(arg)
         if parsed is None:
-            print(f"Error: invalid parameter '{arg}'")
+            print(f"Error: invalid parameter {arg}")
             continue
         name, qty = parsed
         if name in inv.keys():
-            print(f"Redundant item '{name}' - discarding")
+            print(f"Redundant item {name} - discarding")
             continue
         inv.update({name: qty})
     return inv
