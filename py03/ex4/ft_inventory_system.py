@@ -20,10 +20,10 @@ def build_inventory(args: list[str]) -> dict[str, int]:
             print(f"Error: invalid parameter {arg}")
             continue
         name, qty = parsed
-        if name in inv.keys():
+        if name in inv:
             print(f"Redundant item {name} - discarding")
             continue
-        inv.update({name: qty})
+        inv[name] = qty
     return inv
 
 

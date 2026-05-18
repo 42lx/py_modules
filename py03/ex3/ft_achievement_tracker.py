@@ -7,7 +7,7 @@ class Player:
         self.achievements = achievements
 
     def unique_among(self, others: list["Player"]) -> set[str]:
-        result = self.achievements
+        result: set[str] = set(self.achievements)
         for p in others:
             if p is not self:
                 result = result.difference(p.achievements)

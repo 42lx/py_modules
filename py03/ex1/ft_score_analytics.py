@@ -2,14 +2,14 @@ import sys
 
 
 def main() -> None:
-    lst = []
+    lst: list[int] = []
     for arg in sys.argv[1:]:
         try:
             lst.append(int(arg))
         except ValueError:
             print(f"Invalid param {arg}")
     if len(lst) == 0:
-        print("No args provided")
+        print("No valid args provided")
         return
     print("Args provided:", lst)
     print("Max arg:", max(lst))
