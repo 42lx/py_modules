@@ -11,7 +11,8 @@ def main() -> None:
         i += 1
     if len(sys.argv) == 1:
         print("No args provided")
-    print("Total args:", len(sys.argv))
+    else:
+        print("Total args:", len(sys.argv) - 1)
 
 
 if __name__ == "__main__":
