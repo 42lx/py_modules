@@ -79,8 +79,7 @@ def main() -> None:
         return
     finally:
         f.close()
-
-    print(f"File '{name}' closed.")
+        print(f"File '{name}' closed.")
 
     new_content: str = transform(content)
     print("Transform data:")

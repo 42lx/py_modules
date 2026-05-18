@@ -27,8 +27,7 @@ def main() -> None:
         return
     finally:
         f.close()
-
-    print(f"File '{name}' closed.")
+        print(f"File '{name}' closed.")
 
 
 if __name__ == "__main__":
