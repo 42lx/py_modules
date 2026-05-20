@@ -1,4 +1,3 @@
-"""ft_alembic_4: import alchemy and demonstrate hidden create_earth."""
 import alchemy
 
 

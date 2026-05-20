@@ -1,4 +1,3 @@
-"""Light validator module."""
 from .light_spellbook import light_spell_allowed_ingredients
 
 

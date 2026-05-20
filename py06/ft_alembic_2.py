@@ -1,4 +1,3 @@
-"""ft_alembic_2: access alchemy/elements.py via 'import ...'."""
 import alchemy.elements
 
 

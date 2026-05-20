@@ -1,4 +1,3 @@
-"""Transmutation recipes module."""
 from elements import create_fire
 from ..elements import create_air
 from ..potions import strength_potion

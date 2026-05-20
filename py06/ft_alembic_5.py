@@ -1,4 +1,3 @@
-"""ft_alembic_5: access alchemy module via 'from alchemy import ...'."""
 from alchemy import create_air
 
 

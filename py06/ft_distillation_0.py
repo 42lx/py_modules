@@ -1,4 +1,3 @@
-"""ft_distillation_0: brew both potions via direct potions.py access."""
 from alchemy.potions import strength_potion, healing_potion
 
 

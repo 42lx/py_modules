@@ -1,4 +1,3 @@
-"""ft_kaboom_0: record a light spell via the grimoire module."""
 from alchemy.grimoire import light_spell_record
 
 

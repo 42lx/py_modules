@@ -1,4 +1,3 @@
-"""ft_transmutation_1: lead to gold via 'import alchemy.transmutation'."""
 import alchemy.transmutation
 
 

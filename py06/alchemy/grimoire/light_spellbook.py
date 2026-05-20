@@ -1,10 +1,3 @@
-"""Light spellbook module.
-
-Deferred import of the validator avoids the circular dependency: the
-validator needs the allowed-ingredients list, which lives here.
-"""
-
-
 def light_spell_allowed_ingredients() -> list[str]:
     return ["earth", "air", "fire", "water"]
 

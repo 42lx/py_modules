@@ -1,4 +1,3 @@
-"""Dark spellbook module."""
 from .dark_validator import validate_ingredients
 
 

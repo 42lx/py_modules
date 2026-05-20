@@ -1,4 +1,3 @@
-"""ft_transmutation_0: lead to gold via direct recipes.py access."""
 import alchemy.transmutation.recipes
 
 

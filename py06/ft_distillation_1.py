@@ -1,4 +1,3 @@
-"""ft_distillation_1: brew strength + heal alias via 'import alchemy'."""
 import alchemy
 
 

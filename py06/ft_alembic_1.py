@@ -1,4 +1,3 @@
-"""ft_alembic_1: access root elements.py via 'from ... import ...'."""
 from elements import create_water
 
 

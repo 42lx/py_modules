@@ -1,4 +1,3 @@
-"""ft_alembic_0: access root elements.py via 'import ...'."""
 import elements
 
 
