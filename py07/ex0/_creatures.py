@@ -1,4 +1,3 @@
-"""Concrete Creature implementations (package-private)."""
 from .creature import Creature
 
 

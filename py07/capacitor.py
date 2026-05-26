@@ -1,4 +1,3 @@
-"""ex1 test driver — heal + transform capability families."""
 from ex0 import Creature, CreatureFactory
 from ex1 import (
     HealCapability,

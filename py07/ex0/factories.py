@@ -1,4 +1,3 @@
-"""Creature factories (abstract + concrete)."""
 from abc import ABC, abstractmethod
 
 from .creature import Creature
@@ -6,8 +5,6 @@ from ._creatures import Aquabub, Flameling, Pyrodon, Torragon
 
 
 class CreatureFactory(ABC):
-    """Abstract factory."""
-
     @abstractmethod
     def create_base(self) -> Creature:
         ...

@@ -1,6 +1,5 @@
-"""ex2 package — battle strategy pattern."""
 from .exceptions import InvalidStrategyError
-from .strategy import (
+from .strategies import (
     AggressiveStrategy,
     BattleStrategy,
     DefensiveStrategy,

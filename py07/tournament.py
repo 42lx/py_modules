@@ -1,6 +1,3 @@
-"""ex2 test driver — strategy pattern tournaments."""
-from typing import List, Tuple
-
 from ex0 import AquaFactory, CreatureFactory, FlameFactory
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import (
@@ -12,10 +9,10 @@ from ex2 import (
 )
 
 
-Opponent = Tuple[CreatureFactory, BattleStrategy]
+Opponent = tuple[CreatureFactory, BattleStrategy]
 
 
-def battle(opponents: List[Opponent]) -> None:
+def battle(opponents: list[Opponent]) -> None:
     print("*** Tournament ***")
     print(f"{len(opponents)} opponents involved")
     fighters = [(factory.create_base(), strat) for factory, strat in opponents]
@@ -32,7 +29,7 @@ def battle(opponents: List[Opponent]) -> None:
             sb.act(b)
 
 
-def run_tournament(opponents: List[Opponent]) -> None:
+def run_tournament(opponents: list[Opponent]) -> None:
     try:
         battle(opponents)
     except InvalidStrategyError as exc:

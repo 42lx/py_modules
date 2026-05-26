@@ -1,4 +1,3 @@
-"""Battle strategies."""
 from abc import ABC, abstractmethod
 
 from ex0 import Creature
@@ -8,8 +7,6 @@ from .exceptions import InvalidStrategyError
 
 
 class BattleStrategy(ABC):
-    """Abstract battle strategy."""
-
     @abstractmethod
     def is_valid(self, creature: Creature) -> bool:
         ...

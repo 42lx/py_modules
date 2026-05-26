@@ -1,4 +1,3 @@
-"""Capability-bearing Creature factories."""
 from ex0 import Creature, CreatureFactory
 
 from ._creatures import Bloomelle, Morphagon, Shiftling, Sproutling

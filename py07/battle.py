@@ -1,4 +1,3 @@
-"""ex0 test driver — exercises factories and a base-vs-base fight."""
 from ex0 import AquaFactory, CreatureFactory, FlameFactory
 
 
