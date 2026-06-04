@@ -1,4 +1,6 @@
-from ex0 import Creature
+from typing import Any
+
+from ex0.creature import Creature
 
 from .capabilities import HealCapability, TransformCapability
 
@@ -10,7 +12,7 @@ class Sproutling(Creature, HealCapability):
     def attack(self) -> str:
         return f"{self.name} uses Vine Whip!"
 
-    def heal(self, target: Creature | None = None) -> str:
+    def heal(self, target: Any = None) -> str:
         if target is not None:
             return f"{self.name} heals {target.name} for a small amount"
         return f"{self.name} heals itself for a small amount"
@@ -23,7 +25,7 @@ class Bloomelle(Creature, HealCapability):
     def attack(self) -> str:
         return f"{self.name} uses Petal Dance!"
 
-    def heal(self, target: Creature | None = None) -> str:
+    def heal(self, target: Any = None) -> str:
         if target is not None:
             return f"{self.name} heals {target.name} for a large amount"
         return f"{self.name} heals itself and others for a large amount"

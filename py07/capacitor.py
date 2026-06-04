@@ -1,26 +1,21 @@
-from ex0 import Creature, CreatureFactory
-from ex1 import (
-    HealCapability,
-    HealingCreatureFactory,
-    TransformCapability,
-    TransformCreatureFactory,
-)
+from typing import Any
+
+from ex0 import CreatureFactory
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
 
 
-def show_healer(creature: Creature) -> None:
+def show_healer(creature: Any) -> None:
     print(creature.describe())
     print(creature.attack())
-    if isinstance(creature, HealCapability):
-        print(creature.heal())
+    print(creature.heal())
 
 
-def show_transformer(creature: Creature) -> None:
+def show_transformer(creature: Any) -> None:
     print(creature.describe())
     print(creature.attack())
-    if isinstance(creature, TransformCapability):
-        print(creature.transform())
-        print(creature.attack())
-        print(creature.revert())
+    print(creature.transform())
+    print(creature.attack())
+    print(creature.revert())
 
 
 def test_healing(factory: CreatureFactory) -> None:
