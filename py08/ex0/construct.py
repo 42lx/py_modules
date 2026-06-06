@@ -4,11 +4,7 @@ import sys
 
 
 def in_virtual_env() -> bool:
-    return (
-        hasattr(sys, "real_prefix")
-        or sys.base_prefix != sys.prefix
-        or bool(os.environ.get("VIRTUAL_ENV"))
-    )
+    return sys.base_prefix != sys.prefix
 
 
 def venv_name() -> str:
