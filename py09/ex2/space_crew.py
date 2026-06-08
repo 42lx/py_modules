@@ -1,5 +1,8 @@
+import json
 from datetime import datetime
 from enum import Enum
+from pathlib import Path
+from typing import Any
 
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
@@ -59,47 +62,20 @@ class SpaceMission(BaseModel):
         return self
 
 
-def main() -> None:
-    print("Space Mission Crew Validation")
-    print("=" * 41)
+def load_json(filename: str) -> list[dict[str, Any]]:
+    path = Path(__file__).parent / filename
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: '{filename}' not found")
+        return []
+    except json.JSONDecodeError as e:
+        print(f"Error: invalid JSON in '{filename}' - {e}")
+        return []
 
-    crew = [
-        CrewMember(
-            member_id="C001",
-            name="Sarah Connor",
-            rank=Rank.commander,
-            age=42,
-            specialization="Mission Command",
-            years_experience=18,
-        ),
-        CrewMember(
-            member_id="C002",
-            name="John Smith",
-            rank=Rank.lieutenant,
-            age=35,
-            specialization="Navigation",
-            years_experience=10,
-        ),
-        CrewMember(
-            member_id="C003",
-            name="Alice Johnson",
-            rank=Rank.officer,
-            age=29,
-            specialization="Engineering",
-            years_experience=6,
-        ),
-    ]
 
-    mission = SpaceMission(
-        mission_id="M2024_MARS",
-        mission_name="Mars Colony Establishment",
-        destination="Mars",
-        launch_date="2024-12-01T08:00:00",
-        duration_days=900,
-        crew=crew,
-        budget_millions=2500.0,
-    )
-
+def print_mission(mission: SpaceMission) -> None:
     print("Valid mission created:")
     print(f"Mission: {mission.mission_name}")
     print(f"ID: {mission.mission_id}")
@@ -113,8 +89,22 @@ def main() -> None:
             f"- {member.name} ({member.rank.value}) "
             f"- {member.specialization}"
         )
-    print("=" * 41)
 
+
+def main() -> None:
+    print("Space Mission Crew Validation")
+    records = load_json("space_missions.json")
+    for record in records:
+        print("=" * 41)
+        try:
+            mission = SpaceMission.model_validate(record)
+            print_mission(mission)
+        except ValidationError as e:
+            msg = e.errors()[0]["msg"].removeprefix("Value error, ")
+            print("Expected validation error:")
+            print(msg)
+
+    print("=" * 41)
     print("Expected validation error:")
     junior_crew = [
         CrewMember(
@@ -144,8 +134,9 @@ def main() -> None:
             crew=junior_crew,
             budget_millions=150.0,
         )
-    except ValidationError as exc:
-        print(exc.errors()[0]["msg"].removeprefix("Value error, "))
+    except ValidationError as e:
+        msg = e.errors()[0]["msg"].removeprefix("Value error, ")
+        print(msg)
 
 
 if __name__ == "__main__":

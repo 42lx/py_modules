@@ -1,5 +1,7 @@
+import json
 from datetime import datetime
-from typing import Optional
+from pathlib import Path
+from typing import Any, Optional
 
 from pydantic import BaseModel, Field, ValidationError
 
@@ -15,40 +17,39 @@ class SpaceStation(BaseModel):
     notes: Optional[str] = Field(default=None, max_length=200)
 
 
+def load_json(filename: str) -> list[dict[str, Any]]:
+    path = Path(__file__).parent / filename
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: '{filename}' not found")
+        return []
+    except json.JSONDecodeError as e:
+        print(f"Error: invalid JSON in '{filename}' - {e}")
+        return []
+
+
 def main() -> None:
     print("Space Station Data Validation")
-    print("=" * 40)
-
-    station = SpaceStation(
-        station_id="ISS001",
-        name="International Space Station",
-        crew_size=6,
-        power_level=85.5,
-        oxygen_level=92.3,
-        last_maintenance="2024-01-15T10:30:00",
+    records = load_json("space_stations.json") + load_json(
+        "invalid_stations.json"
     )
-
-    print("Valid station created:")
-    print(f"ID: {station.station_id}")
-    print(f"Name: {station.name}")
-    print(f"Crew: {station.crew_size} people")
-    print(f"Power: {station.power_level}%")
-    print(f"Oxygen: {station.oxygen_level}%")
-    print(f"Status: {'Operational' if station.is_operational else 'Offline'}")
-    print("=" * 40)
-
-    print("Expected validation error:")
-    try:
-        SpaceStation(
-            station_id="BAD",
-            name="Overcrowded Outpost",
-            crew_size=25,
-            power_level=70.0,
-            oxygen_level=88.0,
-            last_maintenance=datetime.now(),
-        )
-    except ValidationError as exc:
-        print(exc.errors()[0]["msg"])
+    for record in records:
+        print("=" * 40)
+        try:
+            station = SpaceStation.model_validate(record)
+            print("Valid station created:")
+            print(f"ID: {station.station_id}")
+            print(f"Name: {station.name}")
+            print(f"Crew: {station.crew_size} people")
+            print(f"Power: {station.power_level}%")
+            print(f"Oxygen: {station.oxygen_level}%")
+            status = "Operational" if station.is_operational else "Offline"
+            print(f"Status: {status}")
+        except ValidationError as e:
+            print("Expected validation error:")
+            print(e.errors()[0]["msg"])
 
 
 if __name__ == "__main__":
