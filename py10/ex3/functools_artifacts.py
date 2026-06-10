@@ -4,20 +4,18 @@ from collections.abc import Callable
 from typing import Any
 
 
-OPS: dict[str, Callable] = {
-    "add": operator.add,
-    "multiply": operator.mul,
-    "max": max,
-    "min": min,
-}
-
-
 def spell_reducer(spells: list[int], operation: str) -> int:
+    ops: dict[str, Callable] = {
+        "add": operator.add,
+        "multiply": operator.mul,
+        "max": max,
+        "min": min,
+    }
     if not spells:
         return 0
-    if operation not in OPS:
+    if operation not in ops:
         raise ValueError(f"Unknown operation: {operation}")
-    return functools.reduce(OPS[operation], spells)
+    return functools.reduce(ops[operation], spells)
 
 
 def partial_enchanter(base_enchantment: Callable) -> dict[str, Callable]:
@@ -41,7 +39,7 @@ def memoized_fibonacci(n: int) -> int:
 
 def spell_dispatcher() -> Callable[[Any], str]:
     @functools.singledispatch
-    def cast(spell) -> str:
+    def cast(spell: object) -> str:
         return "Unknown spell type"
 
     @cast.register
